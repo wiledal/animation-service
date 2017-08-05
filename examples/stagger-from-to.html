@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      body {
+        perspective: 700px;
+        font-family: sans-serif;
+        font-size: 40px;
+      }
+      .the-element {
+        width: 200px;
+        height: 200px;
+        background: green;
+        color: #fff;
+        vertical-align: top;
+        display:inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="../animation-service.js" charset="utf-8"></script>
+
+    <div class="the-element">
+      Click me to animate <i>FROM-TO</i>
+    </div>
+    <div class="the-element"></div>
+    <div class="the-element"></div>
+    <div class="the-element"></div>
+    <div class="the-element"></div>
+    <div class="the-element"></div>
+    <div class="the-element"></div>
+    <div class="the-element"></div>
+
+    <script type="text/javascript">
+      var index = 0
+      var els = [].slice.call(document.querySelectorAll('.the-element'))
+
+      function animate () {
+        index++
+
+        AnimationService.animate(els, 500, {
+          transform: 'translate3d(0, 0, 0) scale(1) rotateY(0)',
+          opacity: .5
+        }, {
+          transform: 'translate3d(200px, 200px, 0) scale(.7) rotateY(180deg)',
+          opacity: 1
+        }, 100)
+      }
+
+      els[0].onclick = animate
+    </script>
+  </body>
+</html>
